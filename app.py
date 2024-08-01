@@ -17,7 +17,7 @@ def db_test():
 @app.route('/db_create')
 def db_create():
     try:
-        conn = psycopg2.connect("your_db_url_here")
+        conn = psycopg2.connect("postgresql://lab_10_postgres_user:PVxDQrWoflMYiIPdyUnUZQvATUReZHKZ@dpg-cqletq08fa8c73aq845g-a/lab_10_postgres")
         cur = conn.cursor()
         cur.execute('''
             CREATE TABLE IF NOT EXISTS Basketball(
@@ -38,7 +38,7 @@ def db_create():
 @app.route('/db_insert')
 def db_insert():
     try:
-        conn = psycopg2.connect("your_db_url_here")
+        conn = psycopg2.connect("postgresql://lab_10_postgres_user:PVxDQrWoflMYiIPdyUnUZQvATUReZHKZ@dpg-cqletq08fa8c73aq845g-a/lab_10_postgres")
         cur = conn.cursor()
         cur.execute('''
             INSERT INTO Basketball (First, Last, City, Name, Number)
@@ -58,7 +58,7 @@ def db_insert():
 @app.route('/db_select')
 def db_select():
     try:
-        conn = psycopg2.connect("your_db_url_here")
+        conn = psycopg2.connect("postgresql://lab_10_postgres_user:PVxDQrWoflMYiIPdyUnUZQvATUReZHKZ@dpg-cqletq08fa8c73aq845g-a/lab_10_postgres")
         cur = conn.cursor()
         cur.execute('SELECT * FROM Basketball;')
         records = cur.fetchall()
@@ -81,7 +81,7 @@ def db_select():
 @app.route('/db_drop')
 def db_drop():
     try:
-        conn = psycopg2.connect("your_db_url_here")
+        conn = psycopg2.connect("postgresql://lab_10_postgres_user:PVxDQrWoflMYiIPdyUnUZQvATUReZHKZ@dpg-cqletq08fa8c73aq845g-a/lab_10_postgres")
         cur = conn.cursor()
         cur.execute('DROP TABLE Basketball;')
         conn.commit()
