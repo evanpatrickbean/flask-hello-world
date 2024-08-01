@@ -13,6 +13,29 @@ def db_test():
     except Exception as e:
         return f"An error occurred: {e}"
     
+    
+@app.route('/db_create')
+def db_create():
+    try:
+        conn = psycopg2.connect("your_db_url_here")
+        cur = conn.cursor()
+        cur.execute('''
+            CREATE TABLE IF NOT EXISTS Basketball(
+                First varchar(255),
+                Last varchar(255),
+                City varchar(255),
+                Name varchar(255),
+                Number int
+            );
+        ''')
+        conn.commit()
+        cur.close()
+        conn.close()
+        return "Basketball table successfully created."
+    except Exception as e:
+        return f"An error occurred: {e}"
+    
+    
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
